@@ -6,28 +6,32 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
 
 class CashbackHackServiceTest {
+
     CashbackHackService service = new CashbackHackService();
 
     @Test
     void calculateBonus() {
-        assertEquals(service.remain(2500), 500);
+        assertEquals(500, service.remain(2500));
     }
+
     @Test
     void calculateBonusWhenMinBoundary() {
-        assertEquals(service.remain(0), 1000);
+        assertEquals(1000, service.remain(0));
     }
 
     @Test
     void calculateBonusWhenHighMinBoundary() {
-        assertEquals(service.remain(1), 999);
+
+        assertEquals(999, service.remain(1));
     }
 
     @Test
     void calculateBonusWhenLowHighBoundary() {
-        assertEquals(service.remain(999), 1);
+        assertEquals(1, service.remain(999));
     }
+
     @Test
     void calculateBonusWhenHighBoundary() {
-        assertEquals(service.remain(1000), 0);
+        assertEquals(0, service.remain(1000));
     }
 }
