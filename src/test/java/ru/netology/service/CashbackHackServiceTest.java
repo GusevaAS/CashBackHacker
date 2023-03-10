@@ -1,37 +1,36 @@
 package ru.netology.service;
 
+import org.junit.Test;
 
-import org.testng.annotations.Test;
+import static org.junit.Assert.assertEquals;
 
-import static org.testng.AssertJUnit.assertEquals;
-
-class CashbackHackServiceTest {
+public class CashbackHackServiceTest {
 
     CashbackHackService service = new CashbackHackService();
 
     @Test
-    void calculateBonus() {
-        assertEquals(500, service.remain(2500));
+    public void calculateBonus() {
+        assertEquals(service.remain(2500), 500);
     }
 
     @Test
-    void calculateBonusWhenMinBoundary() {
+    public void calculateBonusWhenMinBoundary() {
         assertEquals(1000, service.remain(0));
     }
 
     @Test
-    void calculateBonusWhenHighMinBoundary() {
+    public void calculateBonusWhenHighMinBoundary() {
 
         assertEquals(999, service.remain(1));
     }
 
     @Test
-    void calculateBonusWhenLowHighBoundary() {
+    public void calculateBonusWhenLowHighBoundary() {
         assertEquals(1, service.remain(999));
     }
 
     @Test
-    void calculateBonusWhenHighBoundary() {
+    public void calculateBonusWhenHighBoundary() {
         assertEquals(0, service.remain(1000));
     }
 }
